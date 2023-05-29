@@ -1,7 +1,11 @@
 import { DraggableDatas } from "@/components/Draggable";
 
 const Strategy = () => {
-	return <DraggableDatas />;
+	return (
+		<>
+			<DraggableDatas />
+		</>
+	);
 };
 
 export default Strategy;

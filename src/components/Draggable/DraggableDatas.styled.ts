@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const DraggableContainer = styled.div`
+	position: relative;
 	width: 100%;
 	height: max-content;
 `;

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import Draggable from "react-draggable";
+import { SettingButton } from "../SettingButton";
 import {
 	DraggableCharBox,
 	DraggableContainer,
@@ -37,6 +38,7 @@ export const DraggableDatas = () => {
 					height={1080}
 				/>
 			</DraggableMapBox>
+			<SettingButton />
 		</DraggableContainer>
 	);
 };
