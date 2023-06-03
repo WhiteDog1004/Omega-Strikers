@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-export interface FAQState {
+export interface MapState {
 	mapValue: string;
 	isOpenMap: boolean;
 
@@ -12,7 +12,7 @@ export interface FAQState {
 	};
 }
 
-const useMaptore = create<FAQState>()(
+const useMaptore = create<MapState>()(
 	devtools((set) => ({
 		mapValue: "AhtenCity",
 		isOpenMap: false,

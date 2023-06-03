@@ -11,7 +11,7 @@ export const MapChangeContainer = styled.div`
 	padding: 30px;
 	width: 300px;
 	height: max-content;
-	background-color: #ffffff;
+	background-color: #00000099;
 	border-radius: 10px;
 `;
 export const MapBox = styled.div`

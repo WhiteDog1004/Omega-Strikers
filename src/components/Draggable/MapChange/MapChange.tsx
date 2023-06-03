@@ -9,10 +9,11 @@ import {
 } from "./MapChange.styled";
 
 export const MapChange = () => {
-	const { setMapValue } = useMapActions();
+	const { setMapValue, setIsCloseMap } = useMapActions();
 
 	const handleChangeMap = (name: string) => () => {
 		setMapValue(name);
+		setIsCloseMap();
 	};
 	return (
 		<MapChangeContainer>

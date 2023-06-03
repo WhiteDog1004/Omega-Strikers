@@ -1,14 +1,25 @@
 import Image from "next/image";
+import { useCharActions, useIsOpenChar } from "../../../stores/CharacterStore";
 import { useIsOpenMap, useMapActions } from "../../../stores/MapStore";
 import { AddButtonContainer } from "./SettingButton.styled";
 
 export const SettingButton = () => {
 	const isOpenMap = useIsOpenMap();
-	const { setMapValue, setIsOpenMap, setIsCloseMap } = useMapActions();
+	const isOpenChar = useIsOpenChar();
+	const { setIsOpenMap, setIsCloseMap } = useMapActions();
+	const { setIsOpenChar, setIsCloseChar } = useCharActions();
 
 	const handleMapChange = () => {
 		if (isOpenMap) return setIsCloseMap();
-		return setIsOpenMap();
+		setIsOpenMap();
+		setIsCloseChar();
+		return;
+	};
+	const handleCharChange = () => {
+		if (isOpenChar) return setIsCloseChar();
+		setIsOpenChar();
+		setIsCloseMap();
+		return;
 	};
 
 	return (
@@ -25,6 +36,7 @@ export const SettingButton = () => {
 				alt={"add"}
 				width={48}
 				height={48}
+				onClick={handleCharChange}
 			/>
 		</AddButtonContainer>
 	);
