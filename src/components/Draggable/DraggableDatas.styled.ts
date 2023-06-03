@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const DraggableContainer = styled.div`
 	position: relative;
@@ -40,3 +41,15 @@ export const DraggableMapBox = styled.div`
 		object-fit: cover;
 	}
 `;
+export const DragBallBox = styled.div`
+	position: absolute;
+	cursor: move;
+	user-select: none;
+	margin: auto;
+	transform: translate(475px, 245px);
+
+	& img {
+		pointer-events: none;
+	}
+`;
+export const DragBall = styled(Image)``;

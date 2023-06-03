@@ -6,6 +6,8 @@ import { useIsOpenMap, useMapValue } from "../../../stores/MapStore";
 import { SettingButton } from "../SettingButton";
 import { CharacterAdd } from "./CharacterAdd";
 import {
+	DragBall,
+	DragBallBox,
 	DraggableCharBox,
 	DraggableContainer,
 	DraggableMapBox,
@@ -24,6 +26,24 @@ export const DraggableDatas = () => {
 	};
 	return (
 		<DraggableContainer>
+			<Draggable
+				onDrag={() => {}}
+				handle=".dragBox"
+				bounds=".container"
+				nodeRef={ref}
+				defaultPosition={{ x: 475, y: 245 }}
+			>
+				<DragBallBox ref={ref} className="dragBox">
+					<DragBall
+						priority
+						src={"/ball.png"}
+						alt={"ball"}
+						width={50}
+						height={50}
+					/>
+				</DragBallBox>
+			</Draggable>
+
 			<Draggable
 				onDrag={() => {}}
 				handle=".dragBox"
