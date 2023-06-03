@@ -1,15 +1,20 @@
 import Image from "next/image";
 import { useRef } from "react";
 import Draggable from "react-draggable";
+import { useIsOpenMap, useMapValue } from "../../../stores/MapStore";
 import { SettingButton } from "../SettingButton";
 import {
 	DraggableCharBox,
 	DraggableContainer,
 	DraggableMapBox,
 } from "./DraggableDatas.styled";
+import { MapChange } from "./MapChange";
 
 export const DraggableDatas = () => {
 	const ref = useRef(null);
+	const mapValue = useMapValue();
+	const isOpenMap = useIsOpenMap();
+
 	return (
 		<DraggableContainer>
 			<Draggable
@@ -32,13 +37,14 @@ export const DraggableDatas = () => {
 			<DraggableMapBox className="container">
 				<Image
 					priority
-					src={"/map/NoText_AhtenCity.png"}
+					src={`/map/NoText_${mapValue}.png`}
 					alt={"map"}
 					width={1920}
 					height={1080}
 				/>
 			</DraggableMapBox>
 			<SettingButton />
+			{isOpenMap && <MapChange />}
 		</DraggableContainer>
 	);
 };

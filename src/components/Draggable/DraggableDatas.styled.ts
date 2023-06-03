@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const DraggableContainer = styled.div`
 	position: relative;
 	width: 100%;
+	max-width: 1024px;
 	height: max-content;
+	margin: 0 auto;
 `;
 export const DraggableCharBox = styled.div`
 	position: absolute;
