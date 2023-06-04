@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { useRef } from "react";
 import Draggable from "react-draggable";
-import { useIsOpenChar } from "../../../stores/CharacterStore";
+import {
+	useAddedData,
+	useCharActions,
+	useIsOpenChar,
+} from "../../../stores/CharacterStore";
 import { useIsOpenMap, useMapValue } from "../../../stores/MapStore";
 import { SettingButton } from "../SettingButton";
-import { CharacterAdd } from "./CharacterAdd";
 import {
 	DragBall,
 	DragBallBox,
@@ -17,12 +20,14 @@ import { OpenChar } from "./OpenChar";
 
 export const DraggableDatas = () => {
 	const ref = useRef(null);
+	const addedChar = useAddedData();
 	const mapValue = useMapValue();
 	const isOpenMap = useIsOpenMap();
 	const isOpenChar = useIsOpenChar();
+	const { setAddedData } = useCharActions();
 
-	const handleCharacter = () => {
-		console.log("click");
+	const handleDeleteChar = (data: any, index: number) => {
+		setAddedData(addedChar.splice(index, 1));
 	};
 	return (
 		<DraggableContainer>
@@ -38,26 +43,43 @@ export const DraggableDatas = () => {
 						priority
 						src={"/ball.png"}
 						alt={"ball"}
-						width={50}
-						height={50}
+						width={40}
+						height={40}
 					/>
 				</DragBallBox>
 			</Draggable>
-
-			<Draggable
-				onDrag={() => {}}
-				handle=".dragBox"
-				bounds=".container"
-				nodeRef={ref}
-			>
-				<DraggableCharBox
-					className="dragBox no-cursor"
-					ref={ref}
-					onClick={handleCharacter}
+			{addedChar.map((data, index) => (
+				<Draggable
+					key={`${data[0]}${data[1]}`}
+					handle=".dragBox"
+					bounds=".container"
+					nodeRef={ref}
 				>
-					<CharacterAdd />
-				</DraggableCharBox>
-			</Draggable>
+					<DraggableCharBox
+						className={`${
+							data[1] === "team"
+								? "team"
+								: data[1] === "enemy"
+								? "enemy"
+								: "none"
+						} dragBox no-cursor`}
+						ref={ref}
+						onContextMenu={(e) => {
+							e.preventDefault();
+							handleDeleteChar(data, index);
+						}}
+					>
+						<Image
+							priority
+							src={`/character/${data[0]}.png`}
+							alt={"character"}
+							fill
+							sizes="100px"
+							className={`no-cursor`}
+						/>
+					</DraggableCharBox>
+				</Draggable>
+			))}
 			<DraggableMapBox className="container">
 				<Image
 					priority

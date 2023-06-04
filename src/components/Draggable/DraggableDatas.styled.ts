@@ -16,16 +16,26 @@ export const DraggableCharBox = styled.div`
 	width: 50px;
 	height: 50px;
 	background-color: black;
-	border: 3px solid red;
+	border: 4px solid transparent;
 	border-radius: 10041004px;
 	margin: auto;
 	cursor: move;
 	user-select: none;
 	overflow: hidden;
+	&.team {
+		border: 4px solid blue;
+	}
+	&.enemy {
+		border: 4px solid red;
+	}
+
+	&.none {
+		display: none;
+	}
 
 	img {
-		width: 100px;
-		height: 100px;
+		width: 50px;
+		height: 50px;
 		pointer-events: none;
 		object-fit: cover;
 	}
