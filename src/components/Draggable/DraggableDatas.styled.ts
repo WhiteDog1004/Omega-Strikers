@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const DraggableContainer = styled.div`
 	position: relative;
+	min-width: 1024px;
 	width: 100%;
 	max-width: 1024px;
 	height: max-content;
@@ -42,11 +43,10 @@ export const DraggableCharBox = styled.div`
 `;
 export const DraggableMapBox = styled.div`
 	width: 100%;
-	height: 100%;
+	height: auto;
 
 	img {
 		width: 100%;
-		height: 100%;
 		pointer-events: none;
 		object-fit: cover;
 	}
@@ -63,3 +63,17 @@ export const DragBallBox = styled.div`
 	}
 `;
 export const DragBall = styled(Image)``;
+export const SaveImageBox = styled.div`
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	background-color: #ffffff;
+	border: 3px solid #000000;
+	border-radius: 10041004px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: skyblue;
+		transition: background-color 0.35s ease-in-out;
+	}
+`;

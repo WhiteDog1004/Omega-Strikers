@@ -1,11 +1,9 @@
-import Link from "next/link";
+import { DraggableDatas } from "@/components/Draggable";
 
 const Home = () => {
 	return (
 		<div className="App">
-			<Link href={"/strategy"}>
-				<span>이동</span>
-			</Link>
+			<DraggableDatas />
 		</div>
 	);
 };

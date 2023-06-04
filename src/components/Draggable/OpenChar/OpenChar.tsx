@@ -17,7 +17,12 @@ export const OpenChar = () => {
 	const handleAddCharacter = (list: any) => () => {
 		if (
 			addedChar
-				.map((data) => data.toString())
+				.map((data) => {
+					if (data.length !== 1) {
+						return data;
+					}
+				})
+				.toString()
 				.includes(`${list.name},${list.type}`)
 		) {
 			return alert("해당 팀의 같은 캐릭터를 추가할 수 없습니다.");
@@ -49,9 +54,9 @@ export const OpenChar = () => {
 	return (
 		<OpenCharContainer>
 			<OpenCharBlock>
-				{CharacterLists.map((list) => (
+				{CharacterLists.map((list, index) => (
 					<OpenCharBox
-						key={list.id}
+						key={`${list.id}${index}`}
 						className={list.type === "team" ? "" : "enemy"}
 						onClick={handleAddCharacter(list)}
 					>

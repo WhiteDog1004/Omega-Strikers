@@ -1,4 +1,6 @@
+import { toPng } from "html-to-image";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import Draggable from "react-draggable";
 import {
@@ -14,11 +16,13 @@ import {
 	DraggableCharBox,
 	DraggableContainer,
 	DraggableMapBox,
+	SaveImageBox,
 } from "./DraggableDatas.styled";
 import { MapChange } from "./MapChange";
 import { OpenChar } from "./OpenChar";
 
 export const DraggableDatas = () => {
+	const router = useRouter();
 	const ref = useRef(null);
 	const addedChar = useAddedData();
 	const mapValue = useMapValue();
@@ -29,14 +33,33 @@ export const DraggableDatas = () => {
 	const handleDeleteChar = (data: any, index: number) => {
 		setAddedData(addedChar.splice(index, 1));
 	};
+
+	//이미지 저장
+	const handleCapture = () => {
+		if (!router.isReady) return;
+		const canvasElement = document.getElementById("canvas");
+		if (canvasElement) {
+			toPng(canvasElement).then((canvas) => {
+				handleSaveAs(canvas, "omega-strikers.png");
+			});
+		}
+	};
+	const handleSaveAs = (url: string, filename: string) => {
+		const link = document.createElement("a");
+		document.body.appendChild(link);
+		link.href = url;
+		link.download = filename;
+		link.click();
+		document.body.removeChild(link);
+	};
+
 	return (
-		<DraggableContainer>
+		<DraggableContainer id="canvas">
 			<Draggable
-				onDrag={() => {}}
 				handle=".dragBox"
 				bounds=".container"
 				nodeRef={ref}
-				defaultPosition={{ x: 475, y: 245 }}
+				defaultPosition={{ x: 478, y: 292 }}
 			>
 				<DragBallBox ref={ref} className="dragBox">
 					<DragBall
@@ -50,7 +73,7 @@ export const DraggableDatas = () => {
 			</Draggable>
 			{addedChar.map((data, index) => (
 				<Draggable
-					key={`${data[0]}${data[1]}`}
+					key={`${data[0]}.${data[1]}${index}`}
 					handle=".dragBox"
 					bounds=".container"
 					nodeRef={ref}
@@ -70,11 +93,10 @@ export const DraggableDatas = () => {
 						}}
 					>
 						<Image
-							priority
 							src={`/character/${data[0]}.png`}
 							alt={"character"}
-							fill
-							sizes="100px"
+							width={50}
+							height={50}
 							className={`no-cursor`}
 						/>
 					</DraggableCharBox>
@@ -85,13 +107,21 @@ export const DraggableDatas = () => {
 					priority
 					src={`/map/NoText_${mapValue}.png`}
 					alt={"map"}
-					width={1920}
-					height={1080}
+					width={1024}
+					height={600}
 				/>
 			</DraggableMapBox>
 			<SettingButton />
 			{isOpenMap && <MapChange />}
 			{isOpenChar && <OpenChar />}
+			<SaveImageBox onClick={handleCapture}>
+				<Image
+					src={"/download.svg"}
+					alt={"save"}
+					width={48}
+					height={48}
+				/>
+			</SaveImageBox>
 		</DraggableContainer>
 	);
 };

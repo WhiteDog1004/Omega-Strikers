@@ -7,4 +7,10 @@ body {
   -moz-user-select: none;
   -ms-use-select: none;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("/background.png");
+  background-position: 100%;
 }

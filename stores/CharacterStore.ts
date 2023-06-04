@@ -5,12 +5,14 @@ export interface CharState {
 	charValue: string;
 	isOpenChar: boolean;
 	addedData: string[];
+	deletedData: number[];
 
 	actions: {
 		setCharValue: (char: string) => void;
 		setIsOpenChar: () => void;
 		setIsCloseChar: () => void;
 		setAddedData: (name: string[]) => void;
+		setDeletedData: (index: number) => void;
 	};
 }
 
@@ -19,6 +21,7 @@ const useChartore = create<CharState>()(
 		charValue: "",
 		isOpenChar: false,
 		addedData: [],
+		deletedData: [],
 
 		actions: {
 			setCharValue: (text) => {
@@ -36,6 +39,11 @@ const useChartore = create<CharState>()(
 					addedData: [...state.addedData, name] as string[],
 				}));
 			},
+			setDeletedData: (index) => {
+				set((state) => ({
+					deletedData: [...state.deletedData, index],
+				}));
+			},
 		},
 	}))
 );
@@ -43,4 +51,5 @@ const useChartore = create<CharState>()(
 export const useCharValue = () => useChartore((state) => state.charValue);
 export const useIsOpenChar = () => useChartore((state) => state.isOpenChar);
 export const useAddedData = () => useChartore((state) => state.addedData);
+export const useDeletedData = () => useChartore((state) => state.deletedData);
 export const useCharActions = () => useChartore((state) => state.actions);
