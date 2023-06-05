@@ -1,4 +1,8 @@
 import { DraggableDatas } from "@/components/Draggable";
+import {
+	CreateText,
+	CreateTextBox,
+} from "@/components/Draggable/DraggableDatas.styled";
 import Image from "next/image";
 
 const Home = () => {
@@ -19,6 +23,15 @@ const Home = () => {
 				}}
 			/>
 			<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+			<CreateTextBox>
+				<CreateText>
+					Creator: WolfDog
+					<br />
+				</CreateText>
+				<CreateText style={{ top: "30px" }}>
+					Discord: WhiteDog#6532
+				</CreateText>
+			</CreateTextBox>
 		</div>
 	);
 };

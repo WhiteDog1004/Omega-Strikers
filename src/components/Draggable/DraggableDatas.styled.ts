@@ -77,3 +77,11 @@ export const SaveImageBox = styled.div`
 		transition: background-color 0.35s ease-in-out;
 	}
 `;
+export const CreateTextBox = styled.div`
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	color: #ffffff;
+	z-index: -1;
+`;
+export const CreateText = styled.span``;
