@@ -1,4 +1,4 @@
-import { toPng } from "html-to-image";
+import * as htmlToImage from "html-to-image";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef } from "react";
@@ -39,9 +39,11 @@ export const DraggableDatas = () => {
 		if (!router.isReady) return;
 		const canvasElement = document.getElementById("canvas");
 		if (canvasElement) {
-			toPng(canvasElement).then((canvas) => {
-				handleSaveAs(canvas, "omega-strikers.png");
-			});
+			htmlToImage
+				.toPng(canvasElement, { includeQueryParams: true })
+				.then((canvas) => {
+					handleSaveAs(canvas, "omega-strikers.png");
+				});
 		}
 	};
 	const handleSaveAs = (url: string, filename: string) => {
