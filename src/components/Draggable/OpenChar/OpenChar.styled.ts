@@ -8,7 +8,7 @@ export const OpenCharContainer = styled.div`
 	padding: 30px;
 	width: 300px;
 	height: max-content;
-	background-color: #00000099;
+	background-color: #111111;
 	border-radius: 10px;
 `;
 export const OpenCharBlock = styled.div`
@@ -33,6 +33,12 @@ export const OpenCharBox = styled.div`
 	background-color: #000;
 	border: 4px solid blue;
 	cursor: pointer;
+	opacity: 0.3;
+
+	&:hover {
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
 
 	&.enemy {
 		border: 4px solid red;

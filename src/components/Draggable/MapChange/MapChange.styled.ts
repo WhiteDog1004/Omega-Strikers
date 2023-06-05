@@ -11,7 +11,7 @@ export const MapChangeContainer = styled.div`
 	padding: 30px;
 	width: 300px;
 	height: max-content;
-	background-color: #00000099;
+	background-color: #111111;
 	border-radius: 10px;
 `;
 export const MapBox = styled.div`
@@ -21,6 +21,12 @@ export const MapBox = styled.div`
 	height: 80px;
 	border-radius: 10px;
 	cursor: pointer;
+	opacity: 0.3;
+
+	&:hover {
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
 `;
 export const MapName = styled.span`
 	position: absolute;
