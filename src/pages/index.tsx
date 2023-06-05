@@ -15,6 +15,7 @@ const Home = () => {
 					position: "absolute",
 					right: "20px",
 					bottom: "20px",
+					zIndex: -1,
 				}}
 			/>
 			<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
