@@ -29,7 +29,7 @@ const Home = () => {
 					<br />
 				</CreateText>
 				<CreateText style={{ top: "30px" }}>
-					Discord: WhiteDog#6532
+					Discord: whitedog
 				</CreateText>
 			</CreateTextBox>
 		</div>
