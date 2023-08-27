@@ -169,4 +169,24 @@ export const CharacterLists = [
 		type: "enemy",
 		name: "Zentaro",
 	},
+	{
+		id: 34,
+		type: "team",
+		name: "Finii",
+	},
+	{
+		id: 35,
+		type: "enemy",
+		name: "Finii",
+	},
+	{
+		id: 36,
+		type: "team",
+		name: "Kazan",
+	},
+	{
+		id: 37,
+		type: "enemy",
+		name: "Kazan",
+	},
 ];
