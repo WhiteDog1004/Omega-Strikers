@@ -189,4 +189,14 @@ export const CharacterLists = [
 		type: "enemy",
 		name: "Kazan",
 	},
+	{
+		id: 38,
+		type: "team",
+		name: "Nao",
+	},
+	{
+		id: 39,
+		type: "enemy",
+		name: "Nao",
+	},
 ];

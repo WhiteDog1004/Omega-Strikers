@@ -5,14 +5,25 @@ export const MapChangeContainer = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	display: flex;
-	gap: 10px;
-	flex-wrap: wrap;
 	padding: 30px;
 	width: 300px;
 	height: max-content;
 	background-color: #111111;
 	border-radius: 10px;
+`;
+export const MapChangeBlock = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	width: 100%;
+	height: 400px;
+	overflow-y: auto;
+	justify-content: center;
+	align-items: center;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 export const MapBox = styled.div`
 	position: relative;

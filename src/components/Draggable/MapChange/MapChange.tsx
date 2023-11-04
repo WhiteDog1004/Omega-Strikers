@@ -4,6 +4,7 @@ import { mapList } from "./MapChange.const";
 import {
 	MapBackground,
 	MapBox,
+	MapChangeBlock,
 	MapChangeContainer,
 	MapName,
 } from "./MapChange.styled";
@@ -17,18 +18,20 @@ export const MapChange = () => {
 	};
 	return (
 		<MapChangeContainer>
-			{mapList.map((map) => (
-				<MapBox key={map.name} onClick={handleChangeMap(map.name)}>
-					<MapName>{map.name}</MapName>
-					<MapBackground>
-						<Image
-							src={`/map/NoText_${map.name}.png`}
-							alt={"maps"}
-							fill
-						/>
-					</MapBackground>
-				</MapBox>
-			))}
+			<MapChangeBlock>
+				{mapList.map((map) => (
+					<MapBox key={map.name} onClick={handleChangeMap(map.name)}>
+						<MapName>{map.name}</MapName>
+						<MapBackground>
+							<Image
+								src={`/map/NoText_${map.name}.png`}
+								alt={"maps"}
+								fill
+							/>
+						</MapBackground>
+					</MapBox>
+				))}
+			</MapChangeBlock>
 		</MapChangeContainer>
 	);
 };
